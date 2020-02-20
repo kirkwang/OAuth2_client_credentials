@@ -1,10 +1,10 @@
 
-package com.asignore.springmvc.controller;
+package com.common.springmvc.controller;
 
 
-import com.asignore.springmvc.configuration.RootConfiguration;
-import com.asignore.springmvc.dto.AuthDTO;
-import com.asignore.springmvc.dto.ValueDTO;
+import com.common.springmvc.configuration.RootConfiguration;
+import com.common.springmvc.dto.AuthDTO;
+import com.common.springmvc.dto.ValueDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;

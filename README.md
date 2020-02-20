@@ -20,7 +20,7 @@ Install maven
 
 From unix terminal:
     
-    git clone https://github.com/antoniosignore/client_credentials.git    
+    git clone https://github.com/kirkwang/OAuth2_client_credentials    
     
 ## Build the WAR
 
@@ -69,7 +69,7 @@ The code in the rest servlet associated to the mapping "/proxy" executes:
 
 ### unit test code coverage 
 
-    ProxyRestController	100% (1/1)	100% (1/1)	85% (6/7)
+    //ProxyRestController	100% (1/1)	100% (1/1)	85% (6/7)
     RiskRestController	100% (1/1)	100% (1/1)	85% (6/7)
 
 # CURL test
@@ -145,8 +145,6 @@ Finally this is the actual final test with the user calling the /proxy endpoint
 
 Being just a test it is by no means code considered of production quality. 
 
-There are some harcoded values (localhost:port address, no logs), no fancy UI, no fancy risk statistics. 
+There are some hardcoded values (localhost:port address, no logs), no fancy UI, no fancy risk statistics. 
 
-The goal was just to try to demostrate the use of the client_credential grant as required in the test.
-        
-        
+The goal was just to try to demonstrate the use of the client_credential grant as required in the test.

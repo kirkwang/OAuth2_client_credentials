@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.asignore.springmvc</groupId>
-    <artifactId>test</artifactId>
+    <groupId>com.common.springmvc</groupId>
+    <artifactId>OAuth2CC</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>test</name>
+    <name>OAuth2CC</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -148,6 +148,6 @@
                 <version>2.2</version>
             </plugin>
         </plugins>
-        <finalName>test</finalName>
+        <finalName>OAuth2CC</finalName>
     </build>
 </project>
