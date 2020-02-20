@@ -1,0 +1,15 @@
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/model/AuthTokenInfo.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/dto/StatDTO.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/configuration/CORSFilter.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/security/AuthorizationServerConfiguration.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/controller/ProxyRestController.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/dto/ValueDTO.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/security/SecurityWebApplicationInitializer.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/service/RestService.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/dto/AuthDTO.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/configuration/RootConfiguration.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/security/MethodSecurityConfig.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/configuration/RootInitializer.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/security/ResourceServerConfiguration.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/controller/RiskRestController.java
+/Users/kwang/code/public/OAuth2/client_credentials/src/main/java/com/asignore/springmvc/security/OAuth2SecurityConfiguration.java
