@@ -18,7 +18,7 @@ import java.util.LinkedHashMap;
 public class RestService {
     final static Logger logger = Logger.getLogger(String.valueOf(RestService.class));
 
-    public static final String AUTH_SERVER_URI = "http://localhost:8080/test/oauth/token";
+    public static final String AUTH_SERVER_URI = "http://localhost:8080/OAuth2CC/oauth/token";
     public static final String CLIENT_CREDENTIAL_GRANT = "?grant_type=client_credentials";
 
     /*
@@ -86,7 +86,7 @@ public class RestService {
         HttpEntity<String> request = new HttpEntity<String>(
                 mapper.writeValueAsString(value),
                 getHeadersWithBearerCredentials(accessToken));
-        String url = "http://localhost:8080/test/api/v1.0/risk";
+        String url = "http://localhost:8080/OAuth2CC/api/v1.0/risk";
         ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.POST, request, Object.class);
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
         if (map != null) {

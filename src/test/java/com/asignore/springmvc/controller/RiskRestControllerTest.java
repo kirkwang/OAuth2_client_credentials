@@ -44,7 +44,7 @@ public class RiskRestControllerTest {
     public void risk_should_receive_unauthorized_status() throws Exception {
 
         // exexute the GET and expect an unauthorized response
-        // curl -X GET -H "Accept: application/json" http://localhost:8080/test/api/v1.0/risk
+        // curl -X GET -H "Accept: application/json" http://localhost:8080/OAuth2CC/api/v1.0/risk
         ObjectMapper mapper = new ObjectMapper();
 
         ValueDTO valueDTO = new ValueDTO();
@@ -88,7 +88,7 @@ public class RiskRestControllerTest {
     public void test_should_receive_risk_stats() throws Exception {
 
         // exexute the GET and expect an unauthorized response
-        // curl -X GET -H "Accept: application/json" http://localhost:8080/test/api/v1.0/risk
+        // curl -X GET -H "Accept: application/json" http://localhost:8080/OAuth2CC/api/v1.0/risk
         ObjectMapper mapper = new ObjectMapper();
 
         ValueDTO valueDTO = new ValueDTO();
