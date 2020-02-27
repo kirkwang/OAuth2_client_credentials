@@ -26,13 +26,13 @@ From unix terminal:
 
     mvn clean package
     
-The resulting test.war file in under :
+The resulting OAuth2CC.war file in under :
 
-    /target/test.war    
+    /target/OAuth2CC.war    
 
 ## Design
 
-The test requires the implementation of the client credential grant defined in Oauth specifications 
+The OAuth2CC requires the implementation of the client credential grant defined in Oauth specifications 
 
 The simplest of all of the OAuth 2.0 grants, this grant is suitable for machine-to-machine authentication where a specific 
 user’s permission to access data is not required.
@@ -59,11 +59,11 @@ The user flow is the following:
 
 1. User calls :
 
-    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/test/proxy --data '{"value":1}'
+    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/OAuth2CC/proxy --data '{"value":1}'
 
 The code in the rest servlet associated to the mapping "/proxy" executes:
 
-    a. a machine to machine rest call http://localhost:8080/test/oauth/token to retrive an Oauth2.0 token 
+    a. a machine to machine rest call http://localhost:8080/OAuth2CC/oauth/token to retrive an Oauth2.0 token 
     b. Using the token in an Authorization: Bearer <token>, access the /proxy endpoing passing the ValueDTO
     3. The /risk engine computes the statistic (very simple in this example (i+1)) and return back to the client Rest caller
 
@@ -78,7 +78,7 @@ In order to validate the solution you can run the following curls.
 
 To be able to execute the CURLs you need to start the web application. There are several ways to do it:
 
-a. Copy the target/test.war into your application server of choice (tomcat or jetty or whatever...)
+a. Copy the target/OAuth2CC.war into your application server of choice (tomcat or jetty or whatever...)
 
 b. if you import the project in IntellJ just click in the maven tomcat7 plugin the goal:
 
@@ -86,7 +86,7 @@ b. if you import the project in IntellJ just click in the maven tomcat7 plugin t
 
 ### POST /api/v1.0/risk
 
-    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/test/api/v1.0/risk
+    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/OAuth2CC/api/v1.0/risk
     
 #### expected response
 
@@ -97,9 +97,9 @@ Expected result is an unauthorized response being the /api/v1.0 endpoint protect
     	"error_description": "An Authentication object was not found in the SecurityContext"
     }
 
-### POST test/oauth/token?grant_type=client_credentials
+### POST OAuth2CC/oauth/token?grant_type=client_credentials
 
-    curl -X POST -H "Accept: application/json" -H "Authorization: Basic Y29kaW5nX3Rlc3Q6YndabTVYQzZIVGxyM2ZjZHpSbkQ="  http://localhost:8080/test/oauth/token?grant_type=client_credentials
+    curl -X POST -H "Accept: application/json" -H "Authorization: Basic Y29kaW5nX3Rlc3Q6YndabTVYQzZIVGxyM2ZjZHpSbkQ="  http://localhost:8080/OAuth2CC/oauth/token?grant_type=client_credentials
     
 
 The Authorization header contains the base64 encoding of the client/secret pair (coding_test:bwZm5XC6HTlr3fcdzRnD)
@@ -119,7 +119,7 @@ The Authorization header contains the base64 encoding of the client/secret pair 
     
 ### GET /api/v1.0/risk   (bearer)
 
-    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer 1e674a1c-7a70-4d93-b815-a2e1aa3b028a" http://localhost:8080/test/api/v1.0/risk --data '{"value":1}' 
+    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer 1e674a1c-7a70-4d93-b815-a2e1aa3b028a" http://localhost:8080/OAuth2CC/api/v1.0/risk --data '{"value":1}' 
 
 
 #### expected response
@@ -129,14 +129,14 @@ This time we expect the input value and the calculated statistics (given 1, we e
     {"value":1,"stat":2}
     
     
-### GET /test   (bearer)
+### GET /OAuth2CC   (bearer)
 
 Finally this is the actual final test with the user calling the /proxy endpoint
 
 
 #### expected response
 
-    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/test/proxy --data '{"value":1}' 
+    curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/OAuth2CC/proxy --data '{"value":1}' 
     
     {"value":1,"stat":2}
     

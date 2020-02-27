@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.asignore.springmvc</groupId>
-    <artifactId>test</artifactId>
+    <artifactId>OAuth2CC</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>test</name>
+    <name>OAuth2CC</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -144,7 +144,7 @@
                 <version>2.4</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <warName>test</warName>
+                    <warName>OAuth2CC</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
@@ -154,6 +154,6 @@
                 <version>2.2</version>
             </plugin>
         </plugins>
-        <finalName>test</finalName>
+        <finalName>OAuth2CC</finalName>
     </build>
 </project>
