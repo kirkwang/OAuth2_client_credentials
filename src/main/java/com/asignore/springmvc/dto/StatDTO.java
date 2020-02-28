@@ -7,22 +7,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StatDTO {
 
-    public int getValue() {
-        return value;
-    }
+  int value;
+  int stat;
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+  public int getValue() {
+    return value;
+  }
 
-    public int getStat() {
-        return stat;
-    }
+  public void setValue(int value) {
+    this.value = value;
+  }
 
-    public void setStat(int stat) {
-        this.stat = stat;
-    }
+  public int getStat() {
+    return stat;
+  }
 
-    int value;
-    int stat;
+  public void setStat(int stat) {
+    this.stat = stat;
+  }
 }

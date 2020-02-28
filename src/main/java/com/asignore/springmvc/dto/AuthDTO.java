@@ -10,56 +10,52 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthDTO {
 
-    public String getAccessToken() {
-        return accessToken;
-    }
+  @JsonProperty("access_token")
+  String accessToken;
+  @JsonProperty("token_type")
+  String tokenType;
+  String bearer;
+  @JsonProperty("expires_in")
+  Long expiresIn;
+  String scope;
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
+  public String getAccessToken() {
+    return accessToken;
+  }
 
-    public String getTokenType() {
-        return tokenType;
-    }
+  public void setAccessToken(String accessToken) {
+    this.accessToken = accessToken;
+  }
 
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
+  public String getTokenType() {
+    return tokenType;
+  }
 
-    public String getBearer() {
-        return bearer;
-    }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
 
-    public void setBearer(String bearer) {
-        this.bearer = bearer;
-    }
+  public String getBearer() {
+    return bearer;
+  }
 
-    public Long getExpiresIn() {
-        return expiresIn;
-    }
+  public void setBearer(String bearer) {
+    this.bearer = bearer;
+  }
 
-    public void setExpiresIn(Long expiresIn) {
-        this.expiresIn = expiresIn;
-    }
+  public Long getExpiresIn() {
+    return expiresIn;
+  }
 
-    public String getScope() {
-        return scope;
-    }
+  public void setExpiresIn(Long expiresIn) {
+    this.expiresIn = expiresIn;
+  }
 
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
+  public String getScope() {
+    return scope;
+  }
 
-    @JsonProperty("access_token")
-    String accessToken;
-
-    @JsonProperty("token_type")
-    String tokenType;
-
-    String bearer;
-
-    @JsonProperty("expires_in")
-    Long expiresIn;
-
-    String scope;
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
 }

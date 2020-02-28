@@ -18,22 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class RiskRestController {
 
 
-    @Autowired
-    RestService restService;
+  @Autowired
+  RestService restService;
 
-    @RequestMapping(value = "/risk", method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<StatDTO> risk(@RequestBody ValueDTO value) {
+  @RequestMapping(value = "/risk", method = RequestMethod.POST,
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<StatDTO> risk(@RequestBody ValueDTO value) {
 
-        if (ObjectUtils.isEmpty(value))
-            return new ResponseEntity<StatDTO>(HttpStatus.BAD_REQUEST);
-
-        StatDTO stat = new StatDTO();
-        stat.setValue(value.getValue());
-        stat.setStat(value.getValue() + 1); // cool stat: we add 1 to the passed param
-
-        return new ResponseEntity<StatDTO>(stat, HttpStatus.OK);
+    if (ObjectUtils.isEmpty(value)) {
+      return new ResponseEntity<StatDTO>(HttpStatus.BAD_REQUEST);
     }
+
+    StatDTO stat = new StatDTO();
+    stat.setValue(value.getValue());
+    stat.setStat(value.getValue() + 1); // cool stat: we add 1 to the passed param
+
+    return new ResponseEntity<StatDTO>(stat, HttpStatus.OK);
+  }
 
 }

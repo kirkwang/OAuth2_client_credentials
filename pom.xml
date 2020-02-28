@@ -152,6 +152,11 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
+                <configuration>
+                    <systemProperties>
+                        <log4j.configuration>file:src/main/resources/log4j.xml</log4j.configuration>
+                    </systemProperties>
+                </configuration>
             </plugin>
         </plugins>
         <finalName>OAuth2CC</finalName>

@@ -5,21 +5,24 @@ import com.asignore.springmvc.dto.ValueDTO;
 import com.asignore.springmvc.model.AuthTokenInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.logging.Logger;
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-
 @Component
 public class RestService {
-    final static Logger logger = Logger.getLogger(String.valueOf(RestService.class));
 
     public static final String AUTH_SERVER_URI = "http://localhost:8080/OAuth2CC/oauth/token";
     public static final String CLIENT_CREDENTIAL_GRANT = "?grant_type=client_credentials";
+    final static Logger logger = Logger.getLogger(String.valueOf(RestService.class));
 
     /*
      * Prepare HTTP Headers.
@@ -36,9 +39,11 @@ public class RestService {
      */
     private static HttpHeaders getHeadersWithClientCredentials() {
         String plainClientCredentials = "coding_test:bwZm5XC6HTlr3fcdzRnD";
-        String base64ClientCredentials = new String(Base64.encodeBase64(plainClientCredentials.getBytes()));
+        String base64ClientCredentials = new String(
+            Base64.encodeBase64(plainClientCredentials.getBytes()));
         HttpHeaders headers = getHeaders();
         headers.add("Authorization", "Basic " + base64ClientCredentials);
+        logger.fine("Authorization Basic");
         return headers;
     }
 
@@ -48,6 +53,7 @@ public class RestService {
      */
     private static HttpHeaders getHeadersWithBearerCredentials(String accessToken) {
         HttpHeaders headers = getHeaders();
+        logger.info("bearer token " + accessToken);
         headers.add("Authorization", "Bearer " + accessToken);
         return headers;
     }
@@ -59,11 +65,11 @@ public class RestService {
     @SuppressWarnings({"unchecked"})
     public static AuthTokenInfo sendTokenRequest() {
         RestTemplate restTemplate = new RestTemplate();
-        logger.info("enable logging");
         HttpEntity<String> request = new HttpEntity<String>(getHeadersWithClientCredentials());
         String url = AUTH_SERVER_URI + CLIENT_CREDENTIAL_GRANT;
 
-        ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.POST, request, Object.class);
+        ResponseEntity<Object> response = restTemplate
+            .exchange(url, HttpMethod.POST, request, Object.class);
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
         AuthTokenInfo tokenInfo = null;
 
@@ -72,7 +78,9 @@ public class RestService {
             tokenInfo.setAccess_token((String) map.get("access_token"));
             tokenInfo.setToken_type((String) map.get("token_type"));
             tokenInfo.setRefresh_token((String) map.get("refresh_token"));
+            logger.info("tokenInfo Refresh_token :" + tokenInfo.getRefresh_token());
             tokenInfo.setExpires_in((int) map.get("expires_in"));
+            logger.info("tokenInfo expires :" + tokenInfo.getExpires_in());
             tokenInfo.setScope((String) map.get("scope"));
         }
         return tokenInfo;
@@ -84,10 +92,11 @@ public class RestService {
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
         HttpEntity<String> request = new HttpEntity<String>(
-                mapper.writeValueAsString(value),
-                getHeadersWithBearerCredentials(accessToken));
+            mapper.writeValueAsString(value),
+            getHeadersWithBearerCredentials(accessToken));
         String url = "http://localhost:8080/OAuth2CC/api/v1.0/risk";
-        ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.POST, request, Object.class);
+        ResponseEntity<Object> response = restTemplate
+            .exchange(url, HttpMethod.POST, request, Object.class);
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
         if (map != null) {
             StatDTO dto = new StatDTO();

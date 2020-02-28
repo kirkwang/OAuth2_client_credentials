@@ -22,14 +22,15 @@ public class ProxyRestController {
     RestService restService;
 
     @RequestMapping(value = "/proxy", method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<StatDTO> proxy(@RequestBody ValueDTO value) throws JsonProcessingException {
-
-        if (ObjectUtils.isEmpty(value))
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<StatDTO> proxy(@RequestBody ValueDTO value)
+        throws JsonProcessingException {
+        if (ObjectUtils.isEmpty(value)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        AuthTokenInfo authTokenInfo = restService.sendTokenRequest();
-        StatDTO risk = restService.risk(value, authTokenInfo.getAccess_token());
+        }
+        AuthTokenInfo authTokenInfo = RestService.sendTokenRequest();
+        StatDTO risk = RestService.risk(value, authTokenInfo.getAccess_token());
         return new ResponseEntity<>(risk, HttpStatus.OK);
     }
 }
