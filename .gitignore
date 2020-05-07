@@ -1,6 +1,4 @@
 /target/
-/.idea/compiler.xml
-/.idea/encodings.xml
 /hs_err_pid29505.log
 /hs_err_pid30444.log
 /hs_err_pid33933.log
@@ -36,8 +34,6 @@
 /.idea/libraries/Maven__org_springframework_spring_test_4_2_4_RELEASE.xml
 /.idea/libraries/Maven__org_springframework_spring_web_4_2_4_RELEASE.xml
 /.idea/libraries/Maven__org_springframework_spring_webmvc_4_2_4_RELEASE.xml
-/.idea/misc.xml
-/.idea/modules.xml
 /replay_pid29505.log
 /replay_pid30444.log
 /replay_pid33933.log

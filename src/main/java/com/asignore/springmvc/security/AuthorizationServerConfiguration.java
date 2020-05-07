@@ -38,7 +38,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         .scopes("read", "write", "trust", "some_scope")
         .secret("bwZm5XC6HTlr3fcdzRnD")
         .accessTokenValiditySeconds(
-            120 * 1000).//Access token is only valid for (2 minutes * 1000) 14 days.
+            1200 * 1000 * 1000).//Access token is only valid for (2 minutes * 1000) 14 days.
         refreshTokenValiditySeconds(600);//Refresh token is only valid for 10 minutes.
   }
 
